@@ -57,3 +57,41 @@ COPY stations.json /app/
 
 # Standardmäßig wird der Telegram-Bot gestartet (dieser CMD kann via docker-compose überschrieben werden)
 CMD ["python", "sprit-bot-app.py"]
+```
+###docker-compose.yml
+
+Mit Docker Compose werden mehrere Services definiert – einer für die ADAC-Spritpreis-API, einer für den Telegram-Bot und einer für den Collector. Ein Beispiel:
+
+```
+services:
+  adac-spritpreis-api:
+    image: tombursch/adac-spritpreis-api:latest
+    restart: always
+    ports:
+      - "5001:5001"  # Portfreigabe, damit die Anwendungen auf die API zugreifen können
+
+  sprit-bot:
+    image: igorsky888/sprit-bot:1.0.6
+    restart: always
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}  # Übergabe des Telegram-Bot-Tokens via Umgebungsvariable (.env)
+    volumes:
+      - ./data/fuel_data.db:/app/fuel_data.db
+      - ./data/subscribers.db:/app/subscribers.db
+    command: python sprit-bot-app.py
+    depends_on:
+      - adac-spritpreis-api
+
+  collector:
+    image: igorsky888/sprit-bot:1.0.6
+    restart: always
+    volumes:
+      - ./data/fuel_data.db:/app/fuel_data.db
+      - ./data/subscribers.db:/app/subscribers.db
+    command: python collector.py
+    depends_on:
+      - adac-spritpreis-api
+
+```
+Hinweis:
+In der Datei stations.json müssen bei den API-URLs die korrekten Service-Namen verwendet werden. Statt localhost sollte hier beispielsweise http://adac-spritpreis-api:5001/... stehen, damit die Container im selben Docker-Netzwerk miteinander kommunizieren können.
