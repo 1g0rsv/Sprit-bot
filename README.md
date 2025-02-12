@@ -1,4 +1,4 @@
-# Sprit-bot
+# Sprit-bot (test project)
 Sprit Bot – Überwachung von Kraftstoffpreisen
 # Sprit Bot – Überwachung von Kraftstoffpreisen
 
