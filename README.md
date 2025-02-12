@@ -58,7 +58,7 @@ COPY stations.json /app/
 # Standardmäßig wird der Telegram-Bot gestartet (dieser CMD kann via docker-compose überschrieben werden)
 CMD ["python", "sprit-bot-app.py"]
 ```
-###docker-compose.yml
+### docker-compose.yml
 
 Mit Docker Compose werden mehrere Services definiert – einer für die ADAC-Spritpreis-API, einer für den Telegram-Bot und einer für den Collector. Ein Beispiel:
 
