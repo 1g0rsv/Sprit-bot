@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Shell",
+        "city": "Darmstadt",
+        "postal_code": "64295",
+        "api_url": "http://142.132.177.148:5000/details/64295-darmstadt-shell/1202262118/",
+        "monitor": true
+    },
+    {
+        "name": "Classic",
+        "city": "Mühlheim",
+        "postal_code": "63165",
+        "api_url": "http://142.132.177.148:5000/details/63165-muehlheim-classic/1576701964/",
+        "monitor": false
+    }
+]
