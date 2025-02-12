@@ -1,5 +1,5 @@
-# Sprit-bot (test project)
-Sprit Bot – Überwachung von Kraftstoffpreisen
+# (test project)
+
 # Sprit Bot – Überwachung von Kraftstoffpreisen
 
 **Sprit Bot** ist ein Pet Project zur Überwachung von Kraftstoffpreisen an Tankstellen in Deutschland. Das Projekt sammelt Daten von der [ADAC-Spritpreis-API](https://github.com/TomBursch/ADAC-Spritpreis-API), speichert diese in einer SQLite-Datenbank und informiert Telegram-Abonnenten über signifikante Preisänderungen.
